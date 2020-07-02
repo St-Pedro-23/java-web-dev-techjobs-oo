@@ -16,6 +16,23 @@ public class PositionType {
     }
 
     // TODO: Add a custom toString() method that returns the data stored in 'value'.
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == o) return true;
+        if (!(o instanceof PositionType)) return false;
+        PositionType aPosition = (PositionType) o;
+        return getId() == aPosition.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
     //  their id fields match.
