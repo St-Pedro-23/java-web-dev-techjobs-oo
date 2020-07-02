@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.Objects;
+
 public class PositionType {
     private int id;
     private static int nextId = 1;
@@ -22,7 +24,7 @@ public class PositionType {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PositionType)) return false;
         PositionType aPosition = (PositionType) o;
