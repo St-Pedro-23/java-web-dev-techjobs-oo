@@ -11,6 +11,7 @@ public class JobTests {
     Job job1;
     Job job2;
     Job job3;
+    Job aJob;
 
     @Test
     public void testSettingJobId(){
@@ -23,6 +24,8 @@ public class JobTests {
     public void createJobObjects(){
         job1 = new Job();
         job2 = new Job();
+        job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        aJob = new Job("Dev", new Employer("Employer"), new Location("The Moon"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -44,5 +47,35 @@ public class JobTests {
         Job aJob = new Job("Dev", new Employer("Employer"), new Location("The Moon"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job anotherJob = new Job("Dev", new Employer("Employer"), new Location("The Moon"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertNotEquals(aJob, anotherJob);
+    }
+    @Test
+    public void testStringReturnWithBlankLinesBeforeAndAfterJobInfo(){
+        assertTrue(job3.toString().startsWith("\n"));
+        assertTrue(aJob.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testStringContainsLabelForEachFieldWithData(){
+        // Test Labels
+        System.out.println(job3.toString());
+        assertTrue(job3.toString().contains("ID:"));
+        assertTrue(job3.toString().contains("Name:"));
+        assertTrue(job3.toString().contains("Employer:"));
+        assertTrue(job3.toString().contains("Location:"));
+        assertTrue(job3.toString().contains("Position Type:"));
+        assertTrue(job3.toString().contains("Core Competency:"));
+        // Test Data Assigned to Labels
+        assertTrue(job3.toString().contains("Product tester"));
+        assertTrue(job3.toString().contains("ACME"));
+        assertTrue(job3.toString().contains("Desert"));
+        assertTrue(job3.toString().contains("Quality control"));
+        assertTrue(job3.toString().contains("Persistence"));
+    }
+
+    @Test
+    public void testEmptyFieldDataNotAvailableAlert(){
+        System.out.println(job1);
+        System.out.println(job3);
+        assertTrue(job1.toString().contains("Data Not Available"));
     }
 }

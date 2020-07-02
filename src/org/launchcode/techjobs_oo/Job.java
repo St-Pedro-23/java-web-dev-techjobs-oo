@@ -7,11 +7,11 @@ public class Job {
     private int id;
     private static int nextId = 1;
 
-    private String name;
-    private Employer employer;
-    private Location location;
-    private PositionType positionType;
-    private CoreCompetency coreCompetency;
+    private String name = "Data Not Available";
+    private Employer employer = new Employer("Data Not Available");
+    private Location location = new Location("Data Not Available");
+    private PositionType positionType = new PositionType("Data Not Available");
+    private CoreCompetency coreCompetency  = new CoreCompetency("Data Not Available");
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -43,6 +43,18 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return  "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + name  + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency +
+                '\n';
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
