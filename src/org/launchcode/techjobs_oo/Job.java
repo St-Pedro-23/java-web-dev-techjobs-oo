@@ -7,11 +7,11 @@ public class Job {
     private int id;
     private static int nextId = 1;
 
-    private String name = "Data Not Available";
-    private Employer employer = new Employer("Data Not Available");
-    private Location location = new Location("Data Not Available");
-    private PositionType positionType = new PositionType("Data Not Available");
-    private CoreCompetency coreCompetency  = new CoreCompetency("Data Not Available");
+    private String name;
+    private Employer employer;
+    private Location location;
+    private PositionType positionType;
+    private CoreCompetency coreCompetency;
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -21,7 +21,8 @@ public class Job {
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency
+            coreCompetency) {
         this();
         this.name = name;
         this.employer = employer;
@@ -47,6 +48,7 @@ public class Job {
 
     @Override
     public String toString() {
+        dataNotAvailable();
         return  "\n" +
                 "ID: " + id + "\n" +
                 "Name: " + name  + "\n" +
@@ -55,6 +57,24 @@ public class Job {
                 "Position Type: " + positionType + "\n" +
                 "Core Competency: " + coreCompetency +
                 '\n';
+    }
+
+    public void dataNotAvailable(){
+        if (name == ""){
+            this.name = "Data Not Available";
+        }
+        if (employer.getValue() == ""){
+            employer.setValue("Data Not Available");
+        }
+        if (location.getValue() == ""){
+            location.setValue("Data Not Available");
+        }
+        if (positionType.getValue() == ""){
+            positionType.setValue("Data Not Available");
+        }
+        if (coreCompetency.getValue() == ""){
+            coreCompetency.setValue("Data Not Available");
+        }
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
