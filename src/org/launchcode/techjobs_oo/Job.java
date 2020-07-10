@@ -60,20 +60,34 @@ public class Job {
     }
 
     public void dataNotAvailable(){
-        if (name == ""){
+        if ((name == null) || name.isBlank()){
             this.name = "Data Not Available";
+        } else {
+            name = this.getName();
         }
-        if (employer.getValue() == ""){
+
+        if ((employer.getValue() == null || employer.getValue().isBlank())){
             employer.setValue("Data Not Available");
+        } else {
+            employer = this.getEmployer();
         }
-        if (location.getValue() == ""){
+
+        if ((location.getValue() == null || location.getValue().isBlank())){
             location.setValue("Data Not Available");
+        } else {
+            location = this.getLocation();
         }
-        if (positionType.getValue() == ""){
+
+        if ((positionType.getValue() == null || positionType.getValue().isBlank())){
             positionType.setValue("Data Not Available");
+        } else {
+            positionType = this.getPositionType();
         }
-        if (coreCompetency.getValue() == ""){
+
+        if ((coreCompetency.getValue() == null || coreCompetency.getValue().isBlank())){
             coreCompetency.setValue("Data Not Available");
+        } else {
+            coreCompetency = this.getCoreCompetency();
         }
     }
 
